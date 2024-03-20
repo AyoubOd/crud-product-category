@@ -1,0 +1,31 @@
+@model Product
+
+
+<fieldset>
+    <legend>Create Product</legend>
+    <form asp-action="@ViewBag.action" asp-controller="Products" method="post">
+        <input type="hidden" asp-for="Id">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" asp-for="Name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" class="form-control" asp-for="Desc">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <input type="number" class="form-control" asp-for="Qte">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quantity</label>
+            <select class="form-select" asp-for="CategoryId">
+                @foreach (var category in ViewBag.categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</fieldset>

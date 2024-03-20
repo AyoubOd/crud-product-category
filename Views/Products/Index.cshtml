@@ -1,0 +1,47 @@
+@model List<Product>
+
+<div>
+    Products
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Qte</td>
+                <td>
+                    <a href="products/show/@product.Id" class="btn btn-info me-2">Show</a>
+                    <form action="delete/@product.Id" method="post">
+                        <button class="btn btn-danger me-2" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+$(document).ready(function () {
+    new DataTable('#example');
+});
+</script>
+}
